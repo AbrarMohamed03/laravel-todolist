@@ -1,7 +1,7 @@
 
 # Laravel TodoList
 
-A simple and user-friendly todo list application built with Laravel, a PHP framework. This application allows users to create, view, update, and delete their todo items.
+A simple and user-friendly todo list application built with Laravel, a PHP framework. This application allows users to create, view and delete their todo items.
 
 
 
