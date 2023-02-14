@@ -19,3 +19,7 @@ Route::get('/',[TodoListController::class, 'index']);
 Route::post('/saveItemRoute', [TodoListController::class, 'saveItem'])->name('saveItem');
 
 Route::post('/completeRoute/{id}', [TodoListController::class, 'complete'])->name('complete');
+
+Route::post('/EditRoute/{id}', [TodoListController::class, 'Edit'])->name('Edit');
+
+Route::post('/updateItemRoute/{id}', [TodoListController::class, 'updateItem'])->name('updateItem');

@@ -34,42 +34,22 @@
             <div >
                 <h1>ToDo List</h1>
 
-                <table class="table table-striped-columns">
-                    <tbody>
-                        @foreach ($listItems as $listItem)
-                        <tr>
-                            <td style="color: white;">{{ $listItem->name }}</td>
-                            <td>
-                                <form method="post" action="{{ route('Edit', $listItem->id) }}" accept-charset="UTF-8">
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-info">Edit</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form method="post" action="{{ route('complete', $listItem->id) }}" accept-charset="UTF-8">
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-info">Complete</button>
-                                </form>
-                            </td>
-                        </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-
 
 
                 
 
-                <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
+                    @foreach ($listItems as $listItem)
+                <form method="post" action="{{ route('updateItem', $listItem->id) }}" accept-charset="UTF-8">
                     
                     {{ csrf_field() }}
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">New ToDo Item</label>
-                        <input type="text" name="Item" class="form-control" placeholder="Type new Item to do">
+                        <label for="exampleInputEmail1" class="form-label">Edit The item</label>
+                        <input type="text" name="Item" class="form-control" placeholder="Type new Item to do" value="{{ $listItem->name }}">
                     </div>
                     
-                    <button type="submit" class="btn btn-primary">Save Item</button>
+                    <button type="submit" class="btn btn-primary">Update Item</button>
                 </form>
+                @endforeach
                
             </div>
         </div>
