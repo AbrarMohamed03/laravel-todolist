@@ -14,12 +14,20 @@ use App\Http\Controllers\TodoListController;
 |
 */
 
-Route::get('/',[TodoListController::class, 'index']);
+Route::get('/',[TodoListController::class, 'index'])->name('home');;
 
-Route::post('/saveItemRoute', [TodoListController::class, 'saveItem'])->name('saveItem');
+Route::get('/doneItemsRoute',[TodoListController::class, 'doneItems'])->name('doneItems');;
 
-Route::post('/completeRoute/{id}', [TodoListController::class, 'complete'])->name('complete');
 
-Route::post('/EditRoute/{id}', [TodoListController::class, 'Edit'])->name('Edit');
 
-Route::post('/updateItemRoute/{id}', [TodoListController::class, 'updateItem'])->name('updateItem');
+Route::post('/saveItemRoute', [TodoListController::class, 'saveItem'])->name('saveItem'); // save new items
+
+Route::post('/completeRoute/{id}', [TodoListController::class, 'complete'])->name('complete'); //set items complete
+
+
+
+Route::post('/EditRoute/{id}', [TodoListController::class, 'Edit'])->name('Edit'); //for edit Items
+
+Route::post('/updateItemRoute/{id}', [TodoListController::class, 'updateItem'])->name('updateItem'); //save the edited items
+
+Route::post('/UnCompleteRoute/{id}', [TodoListController::class, 'UnComplete'])->name('UnComplete'); //set items UnComplete

@@ -12,6 +12,9 @@ class TodoListController extends Controller
     public function index(){
         return view('welcome', ['listItems' => ListItem::where('is_complete', 0)->get()]);
     }
+    public function doneItems(){
+        return view('doneItems', ['listItems' => ListItem::where('is_complete', 1)->get()]);
+    }
     public function complete($id){
 
         $ListItem = ListItem::find($id);
@@ -19,6 +22,14 @@ class TodoListController extends Controller
         $ListItem->save();
 
         return redirect('/');
+    }
+    public function UnComplete($id){
+
+        $ListItem = ListItem::find($id);
+        $ListItem->is_complete = 0;
+        $ListItem->save();
+
+        return redirect('/doneItemsRoute');
     }
     public function Edit($id){
         return view('edit', ['listItems' => ListItem::where('id', $id)->get()]);

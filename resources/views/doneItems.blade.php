@@ -41,49 +41,22 @@
             </nav>
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <div >
-                <h1>ToDo List</h1>
-                <br/>
-                <br/>
-
-                <form method="post" action="{{ route('saveItem') }}" accept-charset="UTF-8">
-                    
-                    {{ csrf_field() }}
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">New ToDo Item</label>
-                        <input type="text" name="Item" class="form-control" placeholder="Type new Item to do">
-                    </div>
-                    
-                    <button type="submit" class="btn btn-primary">Save Item</button>
-                </form>
-                <br/>
-                <br/>
                 <table class="table table-striped-columns">
                     <tbody>
                         @foreach ($listItems as $listItem)
                         <tr>
                             <td style="color: white;">{{ $listItem->name }}</td>
+
                             <td>
-                                <form method="post" action="{{ route('Edit', $listItem->id) }}" accept-charset="UTF-8">
+                                <form method="post" action="{{ route('UnComplete', $listItem->id) }}" accept-charset="UTF-8">
                                     {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-info">Edit</button>
-                                </form>
-                            </td>
-                            <td>
-                                <form method="post" action="{{ route('complete', $listItem->id) }}" accept-charset="UTF-8">
-                                    {{ csrf_field() }}
-                                    <button type="submit" class="btn btn-info">Complete</button>
+                                    <button type="submit" class="btn btn-info">UnComplete</button>
                                 </form>
                             </td>
                         </tr>
                             @endforeach
                         </tbody>
                     </table>
-
-
-
-                
-
-
                
             </div>
         </div>
